@@ -9,7 +9,7 @@ const Projects: Component<{
 }> = (props) => {
     return <ul class='projects'>
         <Index each={props.projects}>{(item) => {
-            const [info] = item();
+            const info = item();
             return <li >
                 <button class='project' type='button' onClick={(e) => {
                     e.preventDefault();

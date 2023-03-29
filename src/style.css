@@ -55,6 +55,16 @@ button:focus-visible {
   outline: 2px solid var(--outline-color);
 }
 
+#project-container {
+  position: relative;
+}
+
+#project-exit-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .projects-container {
   text-align: center;
 }

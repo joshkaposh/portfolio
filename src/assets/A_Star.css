@@ -1,0 +1,110 @@
+body {
+    overflow: hidden;
+}
+
+.tool-btn,
+.current-keybind {
+    background-color: #b3b3b3;
+    color: black;
+    padding: 0.25rem 0.5rem;
+}
+
+.keybind-btn {
+    margin-top: 0.25rem;
+}
+
+.current-keybind {
+    margin-top: 0.5rem;
+}
+
+.canvas-container {
+    position: relative;
+}
+
+#canvas-tools {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.5rem;
+    text-align: left;
+    background-color: rgba(36, 36, 36, 0.9);
+    color: white;
+}
+
+#tools {
+    display: flex;
+    margin-bottom: 0.5rem;
+    gap: 0.25rem;
+}
+
+#main-container {
+    position: relative;
+}
+
+#droppable-container {
+    top: 0;
+    left: 0;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 50vw 50vw;
+
+}
+
+#draggable {
+    width: max-content;
+}
+
+.menu-input {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 2.5fr;
+    padding-inline: 1rem;
+}
+
+#draggable {
+    border: 1px solid white;
+}
+
+.droppable {
+    display: flex;
+    height: 50vh;
+    transition: background-color, 150ms
+}
+
+.drag-over {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+
+.top-right,
+.bottom-right {
+    justify-content: end;
+}
+
+#menu {
+    border: 1px solid black;
+    background-color: rgba(127, 127, 127, 0.25);
+
+}
+
+/* .droppable {
+    height: fit-content
+  } */
+
+
+/* .top-left {
+    background-color: red;
+  }
+  
+  .top-right {
+    background-color: green;
+  }
+  
+  .bottom-left {
+    background-color: blue;
+  }
+  
+  .bottom-right {
+    background-color: yellow;
+  } */

@@ -1,51 +1,57 @@
-import type { Component } from 'solid-js'
+import { createEffect, Index } from 'solid-js'
 import { createSignal, Show } from 'solid-js'
-import allProjects, { IProject } from './projects'
-import Projects from './components/Projects'
+import allProjects from './projects'
 import './style.css'
 
-const ViewProject: Component<{
-    exit: () => void;
-    info: () => IProject
-}> = (props) => {
-    const [info, element] = props.info();
-
-    return <div class='view-project'>
-        <button type='button' onClick={props.exit}><h1>Exit {info.title}</h1></button>
-        <p>{info.description}</p>
-        {element}
-    </div>
-}
-
-
 const App = () => {
-    const [project, _setProject] = createSignal<IProject | undefined>()
-    const setProject = (type?: string) => {
-        let item: IProject | undefined;
-        for (let i = 0; i < allProjects.length; i++) {
-            console.log(allProjects[i]);
-
-            if (allProjects[i][0].title === type) {
-                item = allProjects[i];
+    const [selectedProjectTitle, setSelectedProjectTitle] = createSignal<string>()
+    const projects = allProjects();
+    const getProject = () => {
+        let item;
+        if (!selectedProjectTitle()) {
+            setSelectedProjectTitle()
+            return;
+        }
+        for (let i = 0; i < projects.length; i++) {
+            if (selectedProjectTitle() === projects[i].title) {
+                item = projects[i]
             }
         }
-        return _setProject(item);
-
+        return item;
     }
 
+    createEffect(() => {
+        console.log('Current Project: ', selectedProjectTitle());
+    })
+
     return <div id='app'>
-        <Show when={project()} fallback={
+        <Show when={selectedProjectTitle()} fallback={
             <div class='projects-container'>
                 <h1>Projects</h1>
-                <Projects projects={allProjects} select={(type) => {
-                    setProject(type)
-                }} />
+                <ul class='projects'>
+                    <Index each={projects}>{(p) => {
+                        const info = p();
+                        return <li class='project'>
+                            <button
+                                textContent={info.title}
+                                onClick={() => setSelectedProjectTitle(info.title)}
+                            />
+                        </li>
+                    }}
+                    </Index>
+                </ul>
             </div>
 
-        }>{() => {
-            return <ViewProject exit={() => setProject()} info={() => project()!} />
-        }}
-
+        }>{
+                <div id='project-container'>
+                    {getProject()!.entry}
+                    <button id='project-exit-btn'
+                        type='button'
+                        textContent='Exit'
+                        onClick={() => setSelectedProjectTitle()}
+                    />
+                </div>
+            }
         </Show>
     </div>
 }
