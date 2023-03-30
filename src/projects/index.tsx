@@ -2,19 +2,6 @@ import AStar_EntryPoint from './a-star/ProjectEntryPoint';
 import TestProject from './ProjectPlaceholder';
 import TestProjectImg from '../assets/TestProject.jpg';
 
-// type IProject = {
-//     title: string;
-//     description: string;
-//     preview: {
-//         why: string;
-//         // use_cases: string;
-//         // what_I_learned: string;
-//         // how_to_use: string;
-//     };
-//     image: string;
-//     entry: JSXElement;
-// }
-
 const WHY = 'this should explain why I decided to code this particular project: Use cases, what I learned, etc'
 
 export default function allProjects() {
@@ -47,7 +34,6 @@ export default function allProjects() {
             },
             image: TestProjectImg,
             entry: <TestProject />
-
         }
 
     ]
