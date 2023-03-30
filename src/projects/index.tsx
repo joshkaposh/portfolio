@@ -27,6 +27,15 @@ export default function allProjects() {
             entry: <TestProject />
         },
         {
+            title: 'Grid',
+            description: 'A grid that can be used for tilemaps, A* traversal, or other grid operations ',
+            preview: {
+                why: WHY
+            },
+            image: TestProjectImg,
+            entry: <TestProject />
+        },
+        {
             title: 'Collision detection',
             description: 'General-purpose AABB collision detection',
             preview: {

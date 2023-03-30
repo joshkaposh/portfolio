@@ -103,17 +103,4 @@ export default class Grid {
 
         this.#addNeighboursToNodes(bool)
     }
-
-    // #generateGrid() {
-    //     this.nodes = [];
-
-    //     for (let row = 0; row < this.rows; row++) {
-    //         for (let col = 0; col < this.cols; col++) {
-    //             const index = row * this.cols + col;
-    //             this.nodes.push(new Grid_Node(col, row, index));
-    //         }
-    //     }
-
-    //     this.#addNeighboursToNodes();
-    // }
 }
