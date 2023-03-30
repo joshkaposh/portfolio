@@ -1,22 +1,21 @@
-import type { JSXElement } from 'solid-js';
-import AStar_EntryPoint from './a-star/EntryPoint';
-import TestProject from './TestProject';
+import AStar_EntryPoint from './a-star/ProjectEntryPoint';
+import TestProject from './ProjectPlaceholder';
 import TestProjectImg from '../assets/TestProject.jpg';
 
-export type IProject = {
-    title: string;
-    description: string,
-    image: string
-    entry: JSXElement
-}
-
-
-// const EntryPoint: Component<{
-//     entry: JSXElement
-// }> = (props) => {
-
-//     return props.entry
+// type IProject = {
+//     title: string;
+//     description: string;
+//     preview: {
+//         why: string;
+//         // use_cases: string;
+//         // what_I_learned: string;
+//         // how_to_use: string;
+//     };
+//     image: string;
+//     entry: JSXElement;
 // }
+
+const WHY = 'this should explain why I decided to code this particular project: Use cases, what I learned, etc'
 
 export default function allProjects() {
     const aStarTitle = 'A* Pathfinding Algorithm'
@@ -24,23 +23,32 @@ export default function allProjects() {
     return [
         {
             title: aStarTitle,
-            description: 'This project should demonstrate A*',
+            description: 'Demonstrates A* Pathfinding algorithm',
+            preview: {
+                why: WHY
+            },
             image: TestProjectImg,
             entry: <AStar_EntryPoint />
         },
         {
-            title: 'Second Test Project',
-            description: 'This project should demonstrate collision detection',
+            title: 'Aspect Ratio / Resolution',
+            description: 'Preserves aspect ratio across different screen sizes',
+            preview: {
+                why: WHY
+            },
             image: TestProjectImg,
             entry: <TestProject />
         },
         {
-            title: 'Third Test Project',
-            description: 'This project should demonstrate collision detection',
+            title: 'Collision detection',
+            description: 'General-purpose AABB collision detection',
+            preview: {
+                why: WHY
+            },
             image: TestProjectImg,
             entry: <TestProject />
 
         }
 
-    ] as IProject[]
+    ]
 }

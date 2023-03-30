@@ -1,9 +1,9 @@
 import { Component } from 'solid-js'
 import Menu from './ui/Menu'
 import DragDropMenu from './ui/DragDropMenu'
-import "../../assets/A_Star.css"
+import "./style.css"
 
-const EntryPoint: Component = () => {
+const ProjectEntryPoint: Component = () => {
     let cRef: HTMLCanvasElement;
 
     return <div id='main-container'>
@@ -16,4 +16,4 @@ const EntryPoint: Component = () => {
 
 }
 
-export default EntryPoint
+export default ProjectEntryPoint

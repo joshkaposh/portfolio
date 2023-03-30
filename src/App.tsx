@@ -1,54 +1,60 @@
 import { createEffect, Index } from 'solid-js'
 import { createSignal, Show } from 'solid-js'
 import allProjects from './projects'
-import './style.css'
+import './styles/projects.css'
 
 const App = () => {
-    const [selectedProjectTitle, setSelectedProjectTitle] = createSignal<string>()
     const projects = allProjects();
-    const getProject = () => {
-        let item;
-        if (!selectedProjectTitle()) {
-            setSelectedProjectTitle()
-            return;
-        }
-        for (let i = 0; i < projects.length; i++) {
-            if (selectedProjectTitle() === projects[i].title) {
-                item = projects[i]
-            }
-        }
-        return item;
-    }
+    const [currentProject, setCurrentProject] = createSignal<typeof projects[0]>()
+    const [preview, setPreview] = createSignal<number>();
 
     createEffect(() => {
-        console.log('Current Project: ', selectedProjectTitle());
+        console.log('Current Project: ', currentProject());
     })
 
     return <div id='app'>
-        <Show when={selectedProjectTitle()} fallback={
+        <Show when={currentProject()} fallback={
             <div class='projects-container'>
                 <h1>Projects</h1>
-                <ul class='projects'>
-                    <Index each={projects}>{(p) => {
-                        const info = p();
-                        return <li class='project'>
-                            <button
-                                textContent={info.title}
-                                onClick={() => setSelectedProjectTitle(info.title)}
-                            />
-                        </li>
-                    }}
-                    </Index>
-                </ul>
+                <Show when={typeof preview() === 'number'} fallback={
+                    <ul class='projects'>
+                        <Index each={projects}>{(p, i) => {
+                            const info = p();
+                            return <li class='project-container'>
+                                <button class='project' onClick={() => setPreview(i)}>
+                                    <h2 class='project-title'>{info.title}</h2>
+                                    <p class='project-description'>
+                                        {info.description}
+                                    </p>
+                                </button>
+                                <button class='project-enter-btn'
+                                    textContent='>'
+                                    onClick={() => setCurrentProject(info)}
+                                />
+                            </li>
+                        }}
+                        </Index>
+                    </ul>
+                }>{
+                        <div id='preview'>
+                            <button id='preview-exit-btn' onClick={() => setPreview()}>
+                                Go Back
+                            </button>
+                            <div>
+                                <p>{projects[preview() as number].preview.why}</p>
+                            </div>
+                        </div>
+                    }</Show>
+
             </div>
 
         }>{
                 <div id='project-container'>
-                    {getProject()!.entry}
+                    {currentProject()!.entry}
                     <button id='project-exit-btn'
                         type='button'
                         textContent='Exit'
-                        onClick={() => setSelectedProjectTitle()}
+                        onClick={() => setCurrentProject()}
                     />
                 </div>
             }

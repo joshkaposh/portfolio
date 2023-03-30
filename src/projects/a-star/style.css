@@ -61,10 +61,6 @@ body {
     padding-inline: 1rem;
 }
 
-#draggable {
-    border: 1px solid white;
-}
-
 .droppable {
     display: flex;
     height: 50vh;
@@ -87,24 +83,3 @@ body {
     background-color: rgba(127, 127, 127, 0.25);
 
 }
-
-/* .droppable {
-    height: fit-content
-  } */
-
-
-/* .top-left {
-    background-color: red;
-  }
-  
-  .top-right {
-    background-color: green;
-  }
-  
-  .bottom-left {
-    background-color: blue;
-  }
-  
-  .bottom-right {
-    background-color: yellow;
-  } */

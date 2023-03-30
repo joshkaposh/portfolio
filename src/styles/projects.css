@@ -1,0 +1,94 @@
+#project-exit-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#preview-exit-btn {
+  --border-color: #ff0000;
+  padding: 0.5rem 0;
+  font-size: 1.25rem;
+  background-color: rgb(255, 180, 180);
+}
+
+.project-enter-btn {
+  --border-color: #004718;
+  padding-inline: 0.5rem;
+  background-color: rgb(49, 155, 39);
+  color: white;
+}
+
+.project-enter-btn:hover,
+#preview-exit-btn:hover {
+  border-color: var(--border-color);
+}
+
+#preview {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.projects-container {
+  text-align: center;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+  padding-inline: 1rem;
+}
+
+.projects li,
+#preview {
+  box-shadow: #242424 2px 4px 10px;
+  margin-bottom: 2rem;
+}
+
+.project-container {
+  display: flex;
+  margin: 0 auto;
+}
+
+.project {
+  display: flex;
+}
+
+.project>* {
+  padding-block: 0.5rem;
+}
+
+.project p,
+.project h2 {
+  align-self: center;
+}
+
+@media screen and (min-width: 500px) {
+  .project-container {
+    max-width: 400px;
+    min-width: 400px;
+  }
+
+  .project {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width:750px) {
+  .project-container {
+    flex-direction: column;
+    min-width: 500px;
+  }
+
+  .project {
+    padding: 1rem 2rem;
+    flex-direction: column;
+  }
+
+  .project-enter-btn {
+    padding-block: 0.15rem;
+  }
+}
